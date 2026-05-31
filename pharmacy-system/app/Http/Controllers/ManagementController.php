@@ -1,0 +1,116 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Medicine;
+use App\Models\Sale;
+use App\Models\Supplier;
+use Illuminate\Http\Request;
+
+class ManagementController extends Controller
+{
+    // ============ MEDICINE MANAGEMENT ============
+
+    /**
+     * Show the form for creating a new medicine.
+     */
+    public function createMedicine()
+    {
+        return view('management', [
+            'type' => 'medicines',
+        ]);
+    }
+
+    /**
+     * Store a newly created medicine.
+     */
+    public function storeMedicine(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'category' => 'required|string|max:255',
+            'manufacturer' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'price' => 'required|numeric|min:0',
+            'expiry_date' => 'required|date',
+        ]);
+
+        Medicine::create($request->all());
+        return redirect()->route('records.medicines')->with('success', 'Medicine created successfully.');
+    }
+
+    // ============ SALE MANAGEMENT ============
+
+    /**
+     * Show the form for creating a new sale.
+     */
+    public function createSale()
+    {
+        $medicines = Medicine::all();
+        $sampleSale = Sale::with('medicine')->latest('id')->first();
+
+        return view('management', [
+            'type' => 'sales',
+            'medicines' => $medicines,
+            'sampleSale' => $sampleSale,
+        ]);
+    }
+
+    /**
+     * Store a newly created sale.
+     */
+    public function storeSale(Request $request)
+    {
+        $request->validate([
+            'medicine_id' => 'required|exists:medicines,id',
+            'quantity' => 'required|integer|min:1',
+            'customer_name' => 'nullable|string|max:255',
+        ]);
+
+        $medicine = Medicine::findOrFail($request->medicine_id);
+
+        $total_amount = $medicine->price * $request->quantity;
+
+        Sale::create([
+            'medicine_id' => $request->medicine_id,
+            'medicine_name' => $medicine->name,
+            'quantity' => $request->quantity,
+            'unit_price' => $medicine->price,
+            'total_amount' => $total_amount,
+            'customer_name' => $request->customer_name,
+        ]);
+
+        return redirect()->route('records.sales')->with('success', 'Sale recorded successfully.');
+    }
+
+    // ============ SUPPLIER MANAGEMENT ============
+
+    /**
+     * Show the form for creating a new supplier.
+     */
+    public function createSupplier()
+    {
+        $sampleSupplier = Supplier::latest('id')->first();
+
+        return view('management', [
+            'type' => 'suppliers',
+            'sampleSupplier' => $sampleSupplier,
+        ]);
+    }
+
+    /**
+     * Store a newly created supplier.
+     */
+    public function storeSupplier(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'nullable|email|max:255',
+            'phone' => 'nullable|string|max:255',
+            'address' => 'nullable|string',
+        ]);
+
+        Supplier::create($request->only(['name', 'email', 'phone', 'address']));
+        return redirect()->route('records.suppliers')->with('success', 'Supplier created successfully.');
+    }
+}

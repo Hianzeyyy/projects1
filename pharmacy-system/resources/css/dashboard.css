@@ -1,0 +1,87 @@
+/* Dashboard-specific styles for Pharmacy System */
+.dashboard-main {
+    background: #f0fdf4;
+    min-height: 100vh;
+    padding: 2rem 0;
+}
+.dashboard-header-card {
+    background: linear-gradient(90deg, #16a34a 0%, #0e7490 100%);
+    color: #fff;
+    border-radius: 2rem;
+    padding: 2.5rem 2rem 2rem 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 8px 32px 0 rgba(16, 185, 129, 0.12);
+}
+.dashboard-header-card h1 {
+    font-size: 2.8rem;
+    font-weight: 900;
+    margin-bottom: 0.5rem;
+}
+.dashboard-header-card .subtitle {
+    font-size: 1.25rem;
+    font-weight: 400;
+}
+.dashboard-metrics {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+.dashboard-metric-card {
+    background: #fff;
+    border-radius: 1.5rem;
+    padding: 2rem 2.5rem;
+    min-width: 200px;
+    box-shadow: 0 2px 12px 0 rgba(16, 185, 129, 0.08);
+}
+.dashboard-metric-card .label {
+    font-size: 1.05rem;
+    color: #0284c7;
+    font-weight: 700;
+}
+.dashboard-metric-card .value {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #111827;
+}
+.dashboard-signals {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+.dashboard-signal {
+    background: #fff;
+    border-radius: 2rem;
+    padding: 0.7rem 1.5rem;
+    font-weight: 700;
+    color: #0e7490;
+}
+.dashboard-signal.healthy {
+    color: #16a34a;
+}
+.dashboard-section-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #155e75;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+}
+.dashboard-actions {
+    display: flex;
+    gap: 2rem;
+}
+.dashboard-action-card {
+    background: #fff;
+    border-radius: 1.5rem;
+    padding: 2rem 2.5rem;
+    min-width: 300px;
+    box-shadow: 0 2px 12px 0 rgba(16, 185, 129, 0.08);
+}
+.dashboard-action-card .title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 0.5rem;
+}
+.dashboard-action-card .desc {
+    color: #64748b;
+}

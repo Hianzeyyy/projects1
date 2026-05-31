@@ -1,0 +1,131 @@
+/* SINAG Login/Register Figma-inspired styles */
+body.auth-page {
+  background: var(--background, #dbb1e4);
+  min-height: 100vh;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+}
+
+.auth-card {
+  background: var(--card, #c97dd4);
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 32px 0 rgba(30, 34, 90, 0.10), 0 1.5px 6px 0 rgba(30, 34, 90, 0.04);
+  padding: 2.5rem 2rem 2rem 2rem;
+  margin-top: 1.5rem;
+}
+
+.logo-text {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--primary, #030213);
+  letter-spacing: 0.04em;
+}
+
+.auth-card .form-label {
+  font-weight: 600;
+  color: var(--primary, #030213);
+}
+
+.auth-card .form-control {
+  border-radius: 0.75rem;
+  border: 1.5px solid var(--border, #e3e6ed);
+  background: var(--input-background, #f3f3f5);
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  color: var(--foreground, #22223b);
+  box-shadow: none;
+  transition: border-color 0.2s;
+}
+.auth-card .form-control:focus {
+  border-color: var(--primary, #030213);
+  background: #fff;
+  box-shadow: 0 0 0 2px var(--ring, #e0e7ff);
+}
+
+.btn-primary {
+  background: var(--primary, #030213);
+  border: none;
+  border-radius: 0.75rem;
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 0.75rem 0;
+  box-shadow: 0 2px 8px 0 rgba(30, 34, 90, 0.08);
+  transition: background 0.2s;
+}
+.btn-primary:hover, .btn-primary:focus {
+  background: #1a1a40;
+}
+
+.text-muted {
+  color: #717182 !important;
+}
+
+.auth-card .form-check-label {
+  font-size: 0.98rem;
+  color: var(--muted-foreground, #717182);
+}
+
+.auth-card .form-check-input:checked {
+  background-color: var(--primary, #030213);
+  border-color: var(--primary, #030213);
+}
+
+.auth-card a.text-decoration-none {
+  color: var(--primary, #030213);
+  font-weight: 600;
+  transition: color 0.2s;
+}
+.auth-card a.text-decoration-none:hover {
+  color: #1a1a40;
+}
+
+.auth-card .small {
+  font-size: 0.97rem;
+}
+
+@media (max-width: 576px) {
+  .auth-card {
+    padding: 1.5rem 0.5rem;
+    border-radius: 1rem;
+  }
+  .logo-text {
+    font-size: 1.5rem;
+  }
+}
+
+/* Dark mode support */
+.dark .auth-card {
+  background: var(--card, #18192a);
+  color: var(--card-foreground, #f6f7fb);
+  box-shadow: 0 4px 32px 0 rgba(30, 34, 90, 0.18), 0 1.5px 6px 0 rgba(30, 34, 90, 0.10);
+}
+.dark .logo-text {
+  color: var(--primary, #000000);
+}
+.dark .auth-card .form-label,
+.dark .auth-card .form-check-label {
+  color: var(--primary, #000000);
+}
+.dark .auth-card .form-control {
+  background: #23243a;
+  color: #f6f7fb;
+  border-color: #35365a;
+}
+.dark .auth-card .form-control:focus {
+  background: #23243a;
+  border-color: #fff;
+  box-shadow: 0 0 0 2px #35365a;
+}
+.dark .btn-primary {
+  background: #fff;
+  color: #18192a;
+}
+.dark .btn-primary:hover, .dark .btn-primary:focus {
+  background: #e3e6ed;
+  color: #18192a;
+}
+.dark .auth-card a.text-decoration-none {
+  color: #fff;
+}
+.dark .auth-card a.text-decoration-none:hover {
+  color: #e3e6ed;
+}

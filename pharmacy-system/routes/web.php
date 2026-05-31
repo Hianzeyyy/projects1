@@ -1,0 +1,67 @@
+<?php
+
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ManagementController;
+use App\Http\Controllers\RecordsController;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+
+Route::get('/', function () {
+    return Auth::check()
+        ? redirect()->route('dashboard')
+        : redirect()->route('dashboard');
+});
+
+// Dashboard Route
+Route::get('/dashboard', [DashboardController::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
+
+// Management Routes (Create/Add Records)
+Route::middleware('auth')->group(function () {
+    // Medicine Management
+    Route::get('/medicines/create', [ManagementController::class, 'createMedicine'])->name('medicines.create');
+    Route::post('/medicines', [ManagementController::class, 'storeMedicine'])->name('medicines.store');
+
+    // Sale Management
+    Route::get('/sales/create', [ManagementController::class, 'createSale'])->name('sales.create');
+    Route::post('/sales', [ManagementController::class, 'storeSale'])->name('sales.store');
+
+    // Supplier Management
+    Route::get('/suppliers/create', [ManagementController::class, 'createSupplier'])->name('suppliers.create');
+    Route::post('/suppliers', [ManagementController::class, 'storeSupplier'])->name('suppliers.store');
+});
+
+
+// Records Routes (View, Edit, Delete) - PUBLIC
+Route::get('/medicines', [RecordsController::class, 'indexMedicines'])->name('records.medicines');
+Route::get('/medicines/{id}', [RecordsController::class, 'showMedicine'])->name('medicines.show');
+Route::get('/medicines/{id}/edit', [RecordsController::class, 'editMedicine'])->name('medicines.edit');
+Route::put('/medicines/{id}', [RecordsController::class, 'updateMedicine'])->name('medicines.update');
+Route::delete('/medicines/{id}', [RecordsController::class, 'destroyMedicine'])->name('medicines.destroy');
+
+Route::get('/inventory', function () {
+    return view('inventory');
+})->name('records.inventory');
+
+Route::get('/sales', [RecordsController::class, 'indexSales'])->name('records.sales');
+Route::get('/sales/{id}', [RecordsController::class, 'showSale'])->name('sales.show');
+Route::get('/sales/{id}/edit', [RecordsController::class, 'editSale'])->name('sales.edit');
+Route::put('/sales/{id}', [RecordsController::class, 'updateSale'])->name('sales.update');
+Route::delete('/sales/{id}', [RecordsController::class, 'destroySale'])->name('sales.destroy');
+
+Route::get('/suppliers', [RecordsController::class, 'indexSuppliers'])->name('records.suppliers');
+Route::get('/suppliers/{id}', [RecordsController::class, 'showSupplier'])->name('suppliers.show');
+Route::get('/suppliers/{id}/edit', [RecordsController::class, 'editSupplier'])->name('suppliers.edit');
+Route::put('/suppliers/{id}', [RecordsController::class, 'updateSupplier'])->name('suppliers.update');
+Route::delete('/suppliers/{id}', [RecordsController::class, 'destroySupplier'])->name('suppliers.destroy');
+
+Route::get('/records/medicines', function () {
+    return view('medicines');
+})->name('records.medicines');
+
+require __DIR__.'/auth.php';

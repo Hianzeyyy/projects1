@@ -1,0 +1,380 @@
+/* Splash screen variables and styles */
+
+ :root {
+    --primary-violet: #7c4dff;
+    --accent-blue: #303cc4;
+    --bg-overlay: rgba(255, 255, 255, 0.95);
+    --bar-bg: #e2e8f0;
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url('/image/pharmasys-bg.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.splash-card {
+    background: var(--bg-overlay);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 350px;
+    padding: 40px;
+    border-radius: 20px;
+    backdrop-filter: blur(8px);
+}
+
+.brand-name {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--primary-violet);
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+}
+
+.tagline {
+    font-size: 0.85rem;
+    color: #64748b;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.progress-container {
+    width: 100%;
+    height: 8px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background-color: var(--primary-blue);
+    border-radius: 10px;
+    animation: fillProgress 3s linear forwards;
+}
+
+.loading-status {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #7c4dff;
+    letter-spacing: 1px;
+}
+
+@keyframes fillProgress {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+.splash-card {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 350px;
+    backdrop-filter: blur(8px);
+}
+
+.brand-name {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--primary-violet);
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+}
+
+.tagline {
+    font-size: 0.85rem;
+    color: #64748b;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.progress-container {
+    width: 100%;
+    height: 8px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background-color: var(--primary-violet);
+    border-radius: 10px;
+    animation: fillProgress 3s linear forwards;
+}
+
+.loading-status {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #94a3b8;
+    letter-spacing: 1px;
+}
+
+@keyframes fillProgress {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+.splash-card {
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+    padding: 40px 32px;
+    min-width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.progress-container {
+    width: 100%;
+    height: 8px;
+    background: #ede7f6;
+    border-radius: 4px;
+    margin-bottom: 24px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    width: 100%;
+    height: 100%;
+    background: var(--violet-main);
+    animation: progressBar 3s linear forwards;
+}
+
+@keyframes progressBar {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+.loading-status {
+    margin-top: 16px;
+    font-size: 1.1rem;
+    color: var(--violet-dark);
+    letter-spacing: 1px;
+}
+
+@import 'tailwindcss';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --violet-main: #7c4dff;
+    --violet-dark: #5f2eea;
+    --violet-light: #b39ddb;
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url('public/image/pharmasys-bg.png') no-repeat center center fixed !important;
+    background-size: cover !important;
+    font-family: var(--font-sans);
+}
+
+.sidebar-active {
+    background: rgba(124, 77, 255, 0.13) !important;
+    color: #fff !important;
+}
+
+.sidebar-active i {
+    color: var(--violet-light) !important;
+}
+
+.spin {
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--violet-light);
+    border-radius: 10px;
+}
+
+.tbl-row {
+    transition: background 0.1s;
+}
+
+.tbl-row:hover {
+    background: #ede7f6;
+}
+
+.card-lift {
+    transition: transform .15s, box-shadow .15s;
+}
+
+.card-lift:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px -6px rgba(124, 77, 255, .1);
+}
+
+.modal-bg {
+    backdrop-filter: blur(3px);
+}
+
+input,
+select,
+textarea {
+    transition: border-color .15s, box-shadow .15s;
+}
+
+.ring-inp:focus {
+    outline: none;
+    border-color: var(--violet-main);
+    box-shadow: 0 0 0 3px rgba(124, 77, 255, .15);
+}
+
+
+/* Replace all .bg-green-* and .text-green-* with violet equivalents */
+
+.bg-green-50,
+.bg-green-100,
+.bg-green-200,
+.bg-green-300,
+.bg-green-400,
+.bg-green-500,
+.bg-green-600,
+.bg-green-700,
+.bg-green-800,
+.bg-green-900,
+.bg-green-950 {
+    background-color: #b651f0 !important;
+}
+
+.text-green-50,
+.text-green-100,
+.text-green-200,
+.text-green-300,
+.text-green-400,
+.text-green-500,
+.text-green-600,
+.text-green-700,
+.text-green-800,
+.text-green-900,
+.text-green-950 {
+    color: #b651f0 !important;
+}
+
+.border-green-50,
+.border-green-100,
+.border-green-200,
+.border-green-300,
+.border-green-400,
+.border-green-500,
+.border-green-600,
+.border-green-700,
+.border-green-800,
+.border-green-900,
+.border-green-950 {
+    border-color: #b651f0 !important;
+}
+
+.ring-inp:focus {
+    border-color: #b651f0 !important;
+    box-shadow: 0 0 0 3px rgba(182, 81, 240, .15) !important;
+}
+
+.bg-violet-main {
+    background-color: var(--violet-main) !important;
+}
+
+.bg-violet-dark {
+    background-color: var(--violet-dark) !important;
+}
+
+.bg-violet-light {
+    background-color: var(--violet-light) !important;
+}
+
+.text-violet-main {
+    color: var(--violet-main) !important;
+}
+
+.text-violet-dark {
+    color: var(--violet-dark) !important;
+}
+
+.text-violet-light {
+    color: var(--violet-light) !important;
+}
+
+
+/* Pharmacy transaction + AI parser module */
+
+body.phx-module-bg {
+    display: block;
+    min-height: 100vh;
+    background: radial-gradient(circle at 10% 10%, rgba(196, 181, 253, 0.45), transparent 45%), radial-gradient(circle at 90% 0%, rgba(167, 139, 250, 0.35), transparent 35%), linear-gradient(165deg, #f5f3ff 0%, #ede9fe 52%, #ddd6fe 100%);
+    align-items: initial;
+    justify-content: initial;
+}
+
+.phx-card {
+    border: 1px solid rgba(124, 58, 237, 0.18);
+    border-radius: 1.25rem;
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 18px 35px -18px rgba(91, 33, 182, 0.45);
+    padding: 1.25rem;
+}
+
+.phx-input {
+    width: 100%;
+    border-radius: 0.75rem;
+    border: 1px solid rgba(167, 139, 250, 0.4);
+    background: #fff;
+    color: #2e1065;
+    padding: 0.62rem 0.78rem;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.phx-input:focus {
+    outline: none;
+    border-color: #7c3aed;
+    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.18);
+}

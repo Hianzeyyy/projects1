@@ -1,0 +1,76 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class ElectiveControllers extends Controller
+{
+    public function index(Request $request)
+    {
+        // Force global PHP functions to prevent namespace "Undefined" errors
+        $str_repeat = 'str_repeat';
+        $strtoupper = 'strtoupper';
+
+        // 1. SYSTEM INITIALIZATION
+        \header('Content-Type: text/plain; charset=utf-8');
+
+        $university = "PANGASINAN STATE UNIVERSITY";
+        $campus = "Urdaneta City Campus";
+
+        // Navigation Logic
+        $navOpen = $request->query('nav', 'closed');
+        $page = $request->query('page', 'home');
+
+        // 2. HEADER & DROPDOWN NAV
+        echo \str_repeat(" ", 40) . "PSU PORTAL" . \str_repeat(" ", 25) . "HOME  ";
+
+        if ($navOpen === 'closed') {
+            echo "[ ACTIVITIES ▾ ] (?nav=open&page=$page)\n";
+        } else {
+            echo "[ ACTIVITIES ▴ ] (?nav=closed&page=$page)\n";
+            echo \str_repeat(" ", 71) . "┌──────────────────────┐\n";
+            echo \str_repeat(" ", 71) . "│ [1] SYLLABUS (?page=s)│\n";
+            echo \str_repeat(" ", 71) . "│ [2] SCHEDULE (?page=h)│\n";
+            echo \str_repeat(" ", 71) . "│ [3] CALENDAR (?page=c)│\n";
+            echo \str_repeat(" ", 71) . "└──────────────────────┘\n";
+        }
+
+        echo \str_repeat("=", 100) . "\n";
+        echo \str_repeat(" ", 32) . $university . "\n";
+        echo \str_repeat(" ", 36) . \strtoupper($campus) . "\n";
+        echo \str_repeat("-", 100) . "\n\n";
+
+        // 3. PAGE CONTENT
+        switch ($page) {
+            case 's':
+                echo ">>> ACADEMIC CURRICULUM <<<\n";
+                echo \str_repeat("-", 30) . "\n";
+                echo "A CC 101 - Intro to Computing\n";
+                echo "A CC 102 - Fundamentals of Programming\n";
+                break;
+
+            case 'h':
+                echo ">>> CLASS SCHEDULE <<<\n";
+                echo "MON: 09:00 AM - 12:00 PM | Capstone 1\n";
+                break;
+
+            default:
+                echo \str_repeat(" ", 33) . "Welcome, PSUnians!\n\n";
+                echo "      ______________________       ______________________ \n";
+                echo "     |      [ TARGET ]      |     |      [ BOOK ]       |\n";
+                echo "     |   Strategic Goals    |     |      Curriculum     |\n";
+                echo "     |                      |     |                     |\n";
+                echo "     | [ ?page=mission ]    |     | [ ?page=s ]         |\n";
+                echo "     |______________________|     |_____________________|\n";
+                break;
+        }
+
+        // 4. FOOTER
+        echo "\n" . \str_repeat("-", 100) . "\n";
+        echo \str_repeat(" ", 30) . "© 2026 PSU Student Portal | Developer: Obrero\n";
+        echo \str_repeat("=", 100) . "\n";
+
+        exit; // Critical to stop Laravel from looking for HTML views
+    }
+}

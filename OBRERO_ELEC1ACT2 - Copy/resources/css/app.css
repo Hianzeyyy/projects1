@@ -1,0 +1,30 @@
+@import "tailwindcss";
+.phx-module-bg {
+    background: radial-gradient(circle at 15% 20%, #f5eefe 0%, #ede9fe 35%, #faf5ff 100%);
+}
+
+.phx-card {
+    border: 1px solid #ddd6fe;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 1.25rem;
+    box-shadow: 0 15px 40px rgba(76, 29, 149, 0.08);
+    padding: 1.25rem;
+}
+
+.phx-input {
+    width: 100%;
+    border: 1px solid #c4b5fd;
+    background: #ffffff;
+    color: #4c1d95;
+    border-radius: 0.75rem;
+    padding: 0.85rem 1rem;
+    min-height: 3rem;
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+.phx-input:focus {
+    outline: none;
+    border-color: #8b5cf6;
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+}
